@@ -2,7 +2,7 @@ from openai import OpenAI
 from fastapi import FastAPI, HTTPException
 from pydantic import BaseModel
 
-client = OpenAI(api_key="")
+client = OpenAI(openai)
 
 app = FastAPI()
 
