@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 from openai import OpenAI
 from fastapi import FastAPI, HTTPException
 from pydantic import BaseModel
@@ -26,12 +25,3 @@ def post_chat_response(request: ChatRequest):
         return {"response": response_message}
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
-=======
-from fastapi import FastAPI
-
-app = FastAPI()
-
-@app.get("/")
-def root():
-    return {"message": "Hello World"}
->>>>>>> parent of d052459 (test)
