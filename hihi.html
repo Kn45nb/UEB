@@ -115,8 +115,12 @@
         
         async function saveVocabulary(sentence, source) {
             let words = JSON.parse(localStorage.getItem("vocabulary")) || [];
+            let wordSet = new Set(words.map(entry => entry.word.toLowerCase()));
             sentence.split(/\s+/).forEach(word => {
-                words.push({ word: word, source: source });
+                if (!wordSet.has(word.toLowerCase())) {
+                    words.push({ word: word, source: source });
+                    wordSet.add(word.toLowerCase());
+                }
             });
             localStorage.setItem("vocabulary", JSON.stringify(words));
         }
