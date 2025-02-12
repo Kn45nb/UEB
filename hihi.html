@@ -116,10 +116,12 @@
         async function saveVocabulary(sentence, source) {
             let words = JSON.parse(localStorage.getItem("vocabulary")) || [];
             let wordSet = new Set(words.map(entry => entry.word.toLowerCase()));
-            sentence.split(/\s+/).forEach(word => {
-                if (!wordSet.has(word.toLowerCase())) {
-                    words.push({ word: word, source: source });
-                    wordSet.add(word.toLowerCase());
+            sentence.toLowerCase().split(/\s+/).forEach(word => {
+                // Remove special characters except for apostrophes
+                let cleanedWord = word.replace(/[^a-zA-Z0-9']/g, '');
+                if (!wordSet.has(cleanedWord) && cleanedWord !== '') {
+                    words.push({ word: cleanedWord, source: source });
+                    wordSet.add(cleanedWord);
                 }
             });
             localStorage.setItem("vocabulary", JSON.stringify(words));

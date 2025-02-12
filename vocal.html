@@ -49,7 +49,8 @@
             words.forEach(entry => {
                 let li = document.createElement("li");
                 li.className = "list-group-item";
-                li.textContent = `${entry.word} (${entry.source})`;
+                li.textContent = entry.word;
+                li.style.color = entry.source === "user" ? "blue" : "green";
                 vocabList.appendChild(li);
             });
         }
@@ -59,7 +60,7 @@
             let words = JSON.parse(localStorage.getItem("vocabulary")) || [];
             if (words.length > 0) {
                 let randomWord = words[Math.floor(Math.random() * words.length)];
-                alert(`New word to remember: ${randomWord.word} (${randomWord.source})`);
+                alert(`New word to remember: ${randomWord.word}`);
             }
         }
 
