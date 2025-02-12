@@ -113,9 +113,11 @@
             transcriptText.textContent = "AI: " + text;
         }
         
-        async function saveVocabulary(word, source) {
+        async function saveVocabulary(sentence, source) {
             let words = JSON.parse(localStorage.getItem("vocabulary")) || [];
-            words.push({ word: word, source: source });
+            sentence.split(/\s+/).forEach(word => {
+                words.push({ word: word, source: source });
+            });
             localStorage.setItem("vocabulary", JSON.stringify(words));
         }
         
