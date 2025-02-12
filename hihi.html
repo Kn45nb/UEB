@@ -113,11 +113,9 @@
         }
         
         async function saveVocabulary(word) {
-            await fetch("save_vocabulary.php", {
-                method: "POST",
-                headers: { "Content-Type": "application/json" },
-                body: JSON.stringify({ word: word })
-            });
+            let words = JSON.parse(localStorage.getItem("vocabulary")) || [];
+            words.push(word);
+            localStorage.setItem("vocabulary", JSON.stringify(words));
         }
         
         document.getElementById("sendButton").addEventListener("click", async () => {
