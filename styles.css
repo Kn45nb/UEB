@@ -1,0 +1,78 @@
+/* Background Gradient */
+body {
+    background: linear-gradient(135deg, #FFD3B5, #FFAAA7, #FF7582);
+    background-size: cover;
+    font-family: 'Arial', sans-serif;
+    color: #333;
+}
+
+/* Navbar */
+.navbar {
+    background: rgba(255, 120, 92, 0.9) !important;
+    box-shadow: 0 10px 10px rgba(255, 99, 71, 0.3);
+}
+
+.navbar-brand, .nav-link {
+    color: white !important;
+    transition: all 0.3s ease-in-out;
+}
+
+.nav-link:hover {
+    color: #FFF5E1 !important;
+    text-shadow: 0 0 5px #FFF5E1;
+    transform: translateY(-2px);
+}
+
+/* Hero Section */
+header {
+    background: linear-gradient(135deg, #FFAAA7, #FF7582);
+    text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+    color: white;
+}
+
+/* Buttons */
+.btn-primary {
+    background: #FF6F61;
+    border: none;
+    color: white;
+    transition: all 0.3s ease-in-out;
+    box-shadow: 0 0 8px rgba(255, 99, 71, 0.5);
+}
+
+.btn-primary:hover {
+    background: #FF3D3D;
+    box-shadow: 0 0 12px rgba(255, 99, 71, 0.8);
+    transform: scale(1.1);
+}
+
+/* Input Fields */
+input[type="text"],
+input[type="email"],
+input[type="password"] {
+    width: 100%;
+    padding: 10px;
+    background: white;
+    border: 1px solid #FF6F61;
+    border-radius: 5px;
+    color: #333;
+    outline: none;
+}
+
+input:focus {
+    border-color: #FF3D3D;
+    box-shadow: 0 0 10px #FF3D3D;
+}
+
+/* Section Titles */
+
+
+h2:hover {
+    transform: translateY(-3px);
+}
+
+/* Footer */
+footer {
+    background: #FF6F61;
+    color: #FF6F61;
+    text-shadow: 0 0 8px rgba(255, 255, 255, 0.5);
+}
