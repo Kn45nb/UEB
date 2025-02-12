@@ -35,6 +35,9 @@
         <ul id="vocabList" class="list-group">
             <!-- Words will be dynamically added here -->
         </ul>
+        <div class="text-center mt-4">
+            <button id="clearButton" class="btn btn-danger">Clear Vocabulary</button>
+        </div>
     </section>
 
     <script>
@@ -60,11 +63,20 @@
             }
         }
 
+        // Function to clear vocabulary from localStorage
+        function clearVocabulary() {
+            localStorage.removeItem("vocabulary");
+            loadVocabulary();
+        }
+
         // Load vocabulary on page load
         window.onload = function () {
             loadVocabulary();
             setInterval(showWordNotification, 60000); // Show a word every 1 minute
         };
+
+        // Add event listener to clear button
+        document.getElementById("clearButton").addEventListener("click", clearVocabulary);
     </script>
 </body>
 </html>
