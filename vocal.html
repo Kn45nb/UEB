@@ -43,10 +43,10 @@
             let words = JSON.parse(localStorage.getItem("vocabulary")) || [];
             const vocabList = document.getElementById("vocabList");
             vocabList.innerHTML = "";
-            words.forEach(word => {
+            words.forEach(entry => {
                 let li = document.createElement("li");
                 li.className = "list-group-item";
-                li.textContent = word;
+                li.textContent = `${entry.word} (${entry.source})`;
                 vocabList.appendChild(li);
             });
         }
@@ -56,7 +56,7 @@
             let words = JSON.parse(localStorage.getItem("vocabulary")) || [];
             if (words.length > 0) {
                 let randomWord = words[Math.floor(Math.random() * words.length)];
-                alert(`New word to remember: ${randomWord}`);
+                alert(`New word to remember: ${randomWord.word} (${randomWord.source})`);
             }
         }
 

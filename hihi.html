@@ -79,9 +79,10 @@
         recognition.onresult = async (event) => {
             const speechResult = event.results[0][0].transcript;
             transcriptText.textContent = "You: " + speechResult;
-            saveVocabulary(speechResult);
+            saveVocabulary(speechResult, "user");
             const aiResponse = await getAIResponse(speechResult);
             speakText(aiResponse);
+            saveVocabulary(aiResponse, "ai");
         };
         
         recognition.onerror = (event) => {
@@ -112,9 +113,9 @@
             transcriptText.textContent = "AI: " + text;
         }
         
-        async function saveVocabulary(word) {
+        async function saveVocabulary(word, source) {
             let words = JSON.parse(localStorage.getItem("vocabulary")) || [];
-            words.push(word);
+            words.push({ word: word, source: source });
             localStorage.setItem("vocabulary", JSON.stringify(words));
         }
         
@@ -124,9 +125,11 @@
             
             const chatMessages = document.getElementById("chat-messages");
             chatMessages.innerHTML += `<p><strong>You:</strong> ${userInput}</p>`;
+            saveVocabulary(userInput, "user");
             
             const aiResponse = await getAIResponse(userInput);
             chatMessages.innerHTML += `<p><strong>AI:</strong> ${aiResponse}</p>`;
+            saveVocabulary(aiResponse, "ai");
             chatMessages.scrollTop = chatMessages.scrollHeight;
             document.getElementById("userInput").value = "";
         });
